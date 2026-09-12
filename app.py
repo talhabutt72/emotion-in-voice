@@ -26,7 +26,7 @@ def predict_emotion(audio_bytes, feature_extractor, model):
     )
 
     with torch.no_grad():
-        outputs = model(inputs.input_values)
+        outputs = model(inputs.input_values, attention_mask=inputs.get("attention_mask"))
         probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
 
     probs = probs.squeeze().numpy()
