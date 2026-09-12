@@ -3,7 +3,7 @@ import librosa
 import torch
 import numpy as np
 import io
-from transformers import Wav2Vec2ForCTC, Wav2Vec2FeatureExtractor
+from transformers import Wav2Vec2ForSequenceClassification, Wav2Vec2FeatureExtractor
 
 MODEL_NAME = "r-f/wav2vec-english-speech-emotion-recognition"
 
@@ -13,13 +13,12 @@ st.set_page_config(page_title="Voice Emotion Detector", page_icon="🎙️")
 @st.cache_resource
 def load_model():
     feature_extractor = Wav2Vec2FeatureExtractor.from_pretrained(MODEL_NAME)
-    model = Wav2Vec2ForCTC.from_pretrained(MODEL_NAME)
+    model = Wav2Vec2ForSequenceClassification.from_pretrained(MODEL_NAME)
     model.eval()
     return feature_extractor, model
 
 
 def predict_emotion(audio_bytes, feature_extractor, model):
-    # librosa can load directly from a file-like object
     audio, rate = librosa.load(io.BytesIO(audio_bytes), sr=16000)
 
     inputs = feature_extractor(
@@ -28,13 +27,12 @@ def predict_emotion(audio_bytes, feature_extractor, model):
 
     with torch.no_grad():
         outputs = model(inputs.input_values)
-        probs = torch.nn.functional.softmax(outputs.logits.mean(dim=1), dim=-1)
+        probs = torch.nn.functional.softmax(outputs.logits, dim=-1)
 
     probs = probs.squeeze().numpy()
     predicted_id = int(np.argmax(probs))
     predicted_label = model.config.id2label[predicted_id]
 
-    # full distribution, sorted high -> low
     label_probs = {
         model.config.id2label[i]: float(probs[i]) for i in range(len(probs))
     }
