@@ -9,8 +9,8 @@ Demo Link: https://emotion-in-voice-new.streamlit.app/
 ## How it works
 
 - **Dataset:** RAVDESS (speech audio from 24 actors, emotion label encoded in each filename)
-- **Model:** [Wav2Vec2-base fine-tuned on RAVDESS / CNN on spectrograms. Say which one you actually used]
-- **App:** `app.py` loads the trained model and predicts the emotion from an uploaded audio file using [Streamlit / Gradio / Flask]
+- **Model:** Wav2Vec2-base fine-tuned on RAVDESS
+- **App:** `app.py` loads the trained model and predicts the emotion from an uploaded audio file using Streamlit
 
 ## Run it locally
 
@@ -19,11 +19,11 @@ Demo Link: https://emotion-in-voice-new.streamlit.app/
 2. Install dependencies:
    `pip install -r requirements.txt`
 3. Start the app:
-   `[streamlit run app.py / python app.py]`
+   `streamlit run app.py`
 
 ## Tech stack
 
-Python, PyTorch, [Hugging Face Transformers, librosa, etc. Match your requirements.txt]
+Python, PyTorch, Hugging Face Transformers, librosa.
 
 ## Limitations
 
