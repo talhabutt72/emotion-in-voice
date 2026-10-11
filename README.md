@@ -1,17 +1,36 @@
 # emotion-in-voice
 
-today is day one
+Classifies the emotion in a speech clip (e.g. happy, sad, angry, calm) using deep learning.
 
-2nd dayy
+## Demo
 
-3rd day missed, today is day 4th
+Demo Link: https://emotion-in-voice-new.streamlit.app/
 
-5th day
+## How it works
 
+- **Dataset:** RAVDESS (speech audio from 24 actors, emotion label encoded in each filename)
+- **Model:** [Wav2Vec2-base fine-tuned on RAVDESS / CNN on spectrograms. Say which one you actually used]
+- **App:** `app.py` loads the trained model and predicts the emotion from an uploaded audio file using [Streamlit / Gradio / Flask]
 
-6th day
+## Run it locally
 
+1. Clone the repo:
+   `git clone https://github.com/[your-username]/emotion-in-voice.git`
+2. Install dependencies:
+   `pip install -r requirements.txt`
+3. Start the app:
+   `[streamlit run app.py / python app.py]`
 
-i dono which one
+## Tech stack
 
-tmr i'll definetly work on it
+Python, PyTorch, [Hugging Face Transformers, librosa, etc. Match your requirements.txt]
+
+## Limitations
+
+- Trained on acted speech (RAVDESS), so it may perform worse on real-world, noisy audio
+- English only
+
+## Author
+
+Talha, BS Data Science student
+Linkden: https://www.linkedin.com/in/talhabutt7810/
