@@ -15,7 +15,7 @@ Demo Link: https://emotion-in-voice-new.streamlit.app/
 ## Run it locally
 
 1. Clone the repo:
-   `https://github.com/talhabutt72/emotion-in-voice.git`
+    `git clone https://github.com/talhabutt72/emotion-in-voice.git`
 2. Install dependencies:
    `pip install -r requirements.txt`
 3. Start the app:
@@ -33,4 +33,4 @@ Python, PyTorch, Hugging Face Transformers, librosa, Streamlit
 ## Author
 
 Talha, BS Data Science student
-Linkden: https://www.linkedin.com/in/talhabutt7810/
+LinkedIn: https://www.linkedin.com/in/talhabutt7810/
